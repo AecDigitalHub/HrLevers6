@@ -15,7 +15,10 @@ import { ClrDatagridStateInterface} from '@clr/angular';
 export class EmployeesComponent implements OnInit {
 listEmployees: Observable<Array<Object>>;
 total: number;
-loading: true;
+loading: boolean;
+inventory: any;
+
+
 
   constructor(public employees: EmployeesService, private route: ActivatedRoute) { }
 

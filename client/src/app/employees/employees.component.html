@@ -1,24 +1,54 @@
 
-<clr-datagrid>
-<clr-dg-column>User ID</clr-dg-column>
-<clr-dg-column [clrDgField]="'name'">Name</clr-dg-column>
-<clr-dg-column [clrDgField]="'creation'">Creation date</clr-dg-column>
-<clr-dg-column [clrDgField]="'pokemon'">Pokemon</clr-dg-column>
-<clr-dg-column [clrDgField]="'color'">Favorite color</clr-dg-column>
 
-<clr-dg-row *ngFor="let employee of listEmployees">
-<clr-dg-cell>{{employee.Name}}</clr-dg-cell>
-<clr-dg-cell>{{employee.Surname}}</clr-dg-cell>
-<!-- <clr-dg-cell>{{user.creation | date}}</clr-dg-cell>
-<clr-dg-cell>{{user.pokemon.name}}</clr-dg-cell>
-<clr-dg-cell>
-    <span class="color-square" [style.backgroundColor]="user.color"></span>
-</clr-dg-cell> -->
-</clr-dg-row>
+<img src="https://www.gmmllc.com/assets/1/7/GMM-Business-Header-Image.jpg" class="img-fluid" alt="Responsive image">
 
-<clr-dg-footer>
-{{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
-of {{total}} users
-<clr-dg-pagination #pagination [clrDgTotalItems]="total"></clr-dg-pagination>
-</clr-dg-footer>
-</clr-datagrid>
+<ul id="demoTabs" class="nav" role="tablist">
+        <li role="presentation" class="nav-item">
+            <button id="tab1" class="btn btn-link nav-link active" aria-controls="panel1"
+                    aria-selected="true" type="button">Dashboard</button>
+        </li>
+        <li role="presentation" class="nav-item">
+            <button id="tab2" class="btn btn-link nav-link" aria-controls="panel2"
+                    aria-selected="false" type="button">Management</button>
+        </li>
+        <li role="presentation" class="nav-item">
+            <button id="tab3" class="btn btn-link nav-link" aria-controls="panel3"
+                    aria-selected="false" type="button">Cloud</button>
+        </li>
+    </ul>
+    <section id="panel1" role="tabpanel" aria-labelledby="tab1">
+            <clr-datagrid>
+                    <clr-dg-column>ID</clr-dg-column>
+                    <clr-dg-column [clrDgField]="'Name'">Name</clr-dg-column>
+                    <clr-dg-column [clrDgField]="'Surname'">Surname</clr-dg-column>
+                    <clr-dg-column [clrDgField]="'Role'">Role</clr-dg-column>
+                    <clr-dg-column [clrDgField]="'Department'">Department</clr-dg-column>
+                    <clr-dg-column>Talent Profile</clr-dg-column>
+
+                    <clr-dg-row *clrDgItems="let employee of listEmployees">
+                    <clr-dg-cell>{{employee._id}}</clr-dg-cell>
+                    <clr-dg-cell>{{employee.Name}}</clr-dg-cell>
+                    <clr-dg-cell>{{employee.Surname}}</clr-dg-cell>
+                    <clr-dg-cell>{{employee.Role}}</clr-dg-cell>
+                    <clr-dg-cell>{{employee.Department}}</clr-dg-cell>
+                    <clr-dg-cell>
+                        <button type="button" class="btn btn-info" href='#name' [routerLink]="['/talent-profile', employee._id]"><i class="far fa-eye"></i></button>
+                    </clr-dg-cell>
+
+                    </clr-dg-row>
+                    
+                    <clr-dg-footer>
+                    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+                    of {{total}} listEmployees
+                    <clr-dg-pagination #pagination [clrDgTotalItems]="total"></clr-dg-pagination>
+                    </clr-dg-footer>
+                    </clr-datagrid>
+    </section>
+    <section id="panel2" role="tabpanel" aria-labelledby="tab2" aria-hidden="true">
+        ...
+    </section>
+    <section id="panel3" role="tabpanel" aria-labelledby="tab3" aria-hidden="true">
+        ...
+    </section>
+    
+
