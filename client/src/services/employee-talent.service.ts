@@ -33,4 +33,11 @@ getTasksProgress(id): any {
       return employee;
    }));
   }
+getTaskFiles(id) {
+  return this.http.get(`${BASEURL}/api/tasks/${id}`).pipe(map(res => {
+    console.log(res.json());
+    const taskfiles = res.json();
+    return taskfiles;
+  }));
+}
 }

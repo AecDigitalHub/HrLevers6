@@ -1,17 +1,89 @@
+<div *ngFor="let actionplan of employee.trains">
 <ngb-accordion #acc="ngbAccordion">
-  <ngb-panel id="toggle-1" title="First panel">
+  <ngb-panel id="toggle-1" title={{actionplan.Name}}>
     <ng-template ngbPanelContent>
-    
-    </ng-template>
-  </ngb-panel>
-  <ngb-panel id="toggle-2" title="Second">
-    <ng-template ngbPanelContent>
-    
-    </ng-template>
-  </ngb-panel>
-</ngb-accordion>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Action</th>
+            <th>Description</th>
+            <th>Duedate</th>
+            <th>Status</th>
+            <th>Files</th>
+            <th>
+              <button type="button" class="btn btn-outline-info" data-toggle="modal" attr.data-target="#exampleModal{{i}}">
+                Add new action</button>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of employee.tasks, let j = index">
+            <ng-container *ngIf="task.ActionPlan===actionplan._id">
+              <td>{{task.Name}}</td>
+              <td>{{task.TaskDescription}}</td>
+              <td>{{task.Duedate | date}}</td>
+              <td>{{task.Status}}</td>
+              <td *ngFor="let file of employee.taskFiles">
+                <img *ngIf="file.Task===task._id" src="http://icons.iconarchive.com/icons/graphicloads/colorful-long-shadow/256/Files-icon.png" width="35px">
+              </td>
+              </ng-container>
+              </tr>
+              </tbody>
+              </table>
+            </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
+           
 
 <hr/>
+</div>
 
-<button class="btn btn-sm btn-outline-primary mr-2" (click)="acc.toggle('toggle-1')">Toggle first</button>
-<button class="btn btn-sm btn-outline-primary mr-2" (click)="acc.toggle('toggle-2')">Toggle second</button>
+
+<!-- <div class="modal">
+    <div class="modal-dialog" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-label="Close" class="close" type="button">
+                    <clr-icon aria-hidden="true" shape="close"></clr-icon>
+                </button>
+                <h3 class="modal-title">I have a nice title</h3>
+            </div>
+            <div class="modal-body">
+                <p>But not much to say...</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" type="button">Cancel</button>
+                <button class="btn btn-primary" type="button">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdrop" aria-hidden="true"></div> -->
+
+
+
+<!-- Button trigger modal
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button>
+  
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div> -->

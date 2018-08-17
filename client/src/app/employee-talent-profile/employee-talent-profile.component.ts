@@ -17,6 +17,8 @@ employeeTalent: Observable<any>;
 task: any;
 editedTask: any;
 tasksProgress: any;
+taskId: any;
+taskFiles: any;
 
 
   constructor(private employee: EmployeesService, private talentProfile: EmployeeTalentService, private route: ActivatedRoute) { }
@@ -31,6 +33,5 @@ tasksProgress: any;
     this.talentProfile.getTasksProgress(this.employeeId).subscribe(tasksprogress => {
       this.tasksProgress = parseFloat(tasksprogress.toFixed(2));
     });
-  }
-
+}
 }
